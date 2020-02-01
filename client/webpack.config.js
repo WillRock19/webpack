@@ -1,5 +1,6 @@
 const path = require('path');
 const pathToDistfolder = path.resolve(__dirname, 'dist');
+const minimizeResult = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: './app-src/app.js',
@@ -17,5 +18,8 @@ module.exports = {
                 }
             }
         ]
+    },
+    optimization: {
+        minimize: minimizeResult
     }
 }
