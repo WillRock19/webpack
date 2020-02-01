@@ -17,6 +17,10 @@ module.exports = {
                 use: {
                     loader: 'babel-loader' //Informs how webpack shall process the file. We use babel-loader so the typescript scripts inside our project could be processed as a JS code before webpack process it and creathe the bundle file
                 }
+            },
+            {
+                test: /\.css$/, //Regular expressions to apply this rule only for files that ends with .css. Since we wanna read the .css files inside node-modules, we are not going to specify any exclude type
+                loader: 'style-loader!css-loader', //This is going to apply first the css-loader, and then the style-loader (it executes from right to left). The css-loader will read the css files and transform it in JSON's properties, and the second one will take that json and convert it to an css inline to be styled on the browser
             }
         ]
     },
