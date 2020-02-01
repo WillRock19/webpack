@@ -6,7 +6,8 @@ module.exports = {
     entry: './app-src/app.js',
     output: {
         filename: 'bundle-file.js',
-        path: pathToDistfolder
+        path: pathToDistfolder,
+        publicPath: 'dist' //Informs the public path where webpack will spit the bundle-file.js (we started to use webpack-dev-server and, without this information, it generates the bundle file on a virtually path http://localhost:8080/bundle-file.js. Now, adding this, it will put the file on http://localhost:8080/dist/bundle-file.js)
     },
     module:{
         rules: [
