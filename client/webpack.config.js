@@ -36,13 +36,12 @@ module.exports = {
                 styles: {
                     name: 'styles',
                     test: /\.css$/,
-                    chunks: 'all',
                     enforce: true,
                 },
             },
         },
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: 'my-styles.css' })
+        new MiniCssExtractPlugin({ filename: 'styles.css' })
     ]
 }
