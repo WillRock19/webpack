@@ -3,6 +3,8 @@ import { Negociacao } from './domain/index.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-4-theme/dist/bootstrap-theme.css';
 
+$('h1').click(() => alert('Título; JQuery foi importado com sucesso!'));
+
 const controller = new NegociacaoController();
 const negociacao = new Negociacao(new Date(), 1, 200);
 const headers = new Headers();
