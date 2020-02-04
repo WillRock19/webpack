@@ -1,11 +1,16 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // used instead of 'extract-text-webpack-plugin' (see the reason in: https://github.com/webpack-contrib/extract-text-webpack-plugin). It is going to be used 'cause we need to spit the css inside a <style> tag (before this congfiguration, the CSS was beeing put inside the HTML by the JScript, and that was generating a little delay where the user could see the site without the styles and only then with loaded then - it's an effect called FOUC, wich means Flash Of Unstyled Content). We want to load the style inside the <link> to use the optimizations to load the CSS that the browser has.
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // Plugin added to make a minify file with the bootstrap´css that webpack will manage
 
 const pathToDistfolder = path.resolve(__dirname, 'dist');
-const minimizeResult = process.env.NODE_ENV === 'production';
+const isProductionEnvironment = process.env.NODE_ENV === 'production';
 
 let plugins = [];
 plugins.push(new MiniCssExtractPlugin({ filename: 'styles.css' }));
+
+if(isProductionEnvironment) {
+    plugins.push(new OptimizeCSSAssetsPlugin({}));
+}
 
 module.exports = {
     entry: './app-src/app.js',
@@ -30,7 +35,7 @@ module.exports = {
         ]
     },
     optimization: {
-        minimize: minimizeResult,
+        minimize: isProductionEnvironment,
         splitChunks: {
             cacheGroups: {
                 styles: {
