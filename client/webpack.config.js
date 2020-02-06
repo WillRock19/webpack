@@ -7,6 +7,7 @@ const pathToDistfolder = path.resolve(__dirname, 'dist');
 const isProductionEnvironment = process.env.NODE_ENV === 'production';
 
 let plugins = [];
+
 plugins.push(new MiniCssExtractPlugin({ filename: 'styles.css' }));
 plugins.push(new webpack.ProvidePlugin({ //This will provide the Jquery variables '$' and 'jQuery' as global to every js file that will be aggregated in the bundle
     '$' : 'jquery/dist/jquery.js',
