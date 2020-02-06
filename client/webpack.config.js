@@ -15,6 +15,7 @@ plugins.push(new webpack.ProvidePlugin({ //This will provide the Jquery variable
 }));
 
 if(isProductionEnvironment) {
+    plugins.push(new webpack.optimize.ModuleConcatenationPlugin()); // This is a option that helps to optimize the bundle generation. As the explanation in class: "Cada módulo do nosso bundle é envolvido por um wrapper, que resumidamente se trata de uma função. Contudo, a existência desses wrappers tornam a execução do script um pouco mais lenta no navegador. Existe uma técnica chamada Scope Hosting, que consiste em concatenar o escopo de todos os módulos em um único wrapper, permitindo assim que nosso código seja executado mais rapidamente no navegador."
     plugins.push(new OptimizeCSSAssetsPlugin({}));
 }
 
